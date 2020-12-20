@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script src="https://unpkg.com/vue@3.0.2"></script>
+	<title>Document</title>
+	<style>
+		table, td {
+			border-collapse: collapse;
+			border: 1px solid black;
+		}
+		.box {
+			padding: 100px 0;
+			width: 400px;
+			background: #ddd;
+			display: inline-block;
+			margin: 20px;
+		}
+	</style>
+</head>
+<body>
+
+	<div id="app">
+		<div v-if="showdata">
+			<table>
+				<tr v-for="(town, rent) in averageRent">
+					<td>{{town}}</td>
+					<td>{{rent}}</td>
+				</tr>
+				<tr>
+					<td v-on:click="sum()">Suma</td>
+					<td>{{suma}}</td>
+				</tr>
+			</table>
+		</div>
+		<button v-on:click="showMeData">
+			<span v-if="showdata">Hide data</span>
+			<span v-else="showdata">Show data</span>
+		</button>
+		<hr>
+
+		<div class="box" v-on:mouseover="handleEvents($event, 5)">1</div>
+		<div class="box" v-on:mouseleave="handleEvents">2</div>
+		<div class="box" v-on:dblclick="handleEvents">3</div>
+
+		<hr>
+		<a v-bind:href="url" target="_blank">Got to Google</a>
+	</div>	
+
+<script src='moral.js'></script>
+</body>
+</html>
