@@ -5,10 +5,28 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Document</title>
 	<script src="https://unpkg.com/vue@3.0.2"></script>
+	<style>
+		ul {
+			list-style: none;
+			margin: 10px 0 0 0;
+			padding: 0;
+		}
+		p.checktime {
+			color: red;
+			font-weight: bold;
+			text-transform: uppercase;
+		}
+	</style>
 </head>
 <body>
-	<h3>For test</h3>
 	<div id="app">
+		<p>Template loaded from path {{ path }}</p>
+		<p class="checktime" v-if="hours < 12">Good morning</p>
+		<p class="checktime" v-if="hours >= 12 && hours < 18">Good afternoon</p>
+		<p class="checktime" v-if="hours > 18">Good evening</p>
+
+		<p>{{ message }}</p>
+		<p><input type="text" v-model="message"></p>
 
 		<div v-if="showContent">
 			<p>{{ title }} - {{ author }} - {{ age }}</p>
@@ -16,10 +34,16 @@
 
 		<button v-on:click="age++">Increase age</button>
 		<button v-on:click="age--">Decrease age</button>
+
 		<button v-on:click="changeTitle()">
 			<span v-if="showContent">Hide Content</span>
 			<span v-else>Show Content</span>
 		</button>
+
+		<ul>
+			<li v-for="x in todos"><u>{{ x.text }}</u></li>
+		</ul>
+
 	</div>
 
 <script src='app.js'></script>
