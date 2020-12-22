@@ -1,5 +1,7 @@
 <template>
   <h3>{{ title }}</h3>
+  {{ label }} <input type="text" ref="name">
+  <button @click="handleClick">Click me</button>
 </template>
 
 <script>
@@ -9,8 +11,16 @@ export default {
   data() {
     return {
       title: 'Some title',
+      label: 'Enter something',
     }
-  }
+  },
+  methods: {
+    handleClick() {
+      console.log(this.$refs.name)
+      this.$refs.name.classList.add('active')
+      this.$refs.name.focus()
+    }
+  },
 }
 </script>
 
@@ -27,5 +37,9 @@ export default {
 h3 {
   border-bottom: 1px solid #ccc;
   text-transform: uppercase;
+}
+.active {
+  background-color: brown;
+  color: white;
 }
 </style>
