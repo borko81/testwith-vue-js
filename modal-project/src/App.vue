@@ -1,13 +1,16 @@
 <template>
-  <h3>{{ title }}</h3>
-  {{ label }} <input type="text" ref="name">
-  <button @click="handleClick">Click me</button>
+<div>
+    <h3>{{ title }}</h3>
+    <Modal />
+</div>
 </template>
 
 <script>
+import Modal from './components/Modal.vue';
 
 export default {
   name: 'App',
+  components: { Modal },
   data() {
     return {
       title: 'Some title',
@@ -15,11 +18,7 @@ export default {
     }
   },
   methods: {
-    handleClick() {
-      console.log(this.$refs.name)
-      this.$refs.name.classList.add('active')
-      this.$refs.name.focus()
-    }
+    
   },
 }
 </script>
